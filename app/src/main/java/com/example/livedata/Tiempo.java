@@ -9,9 +9,9 @@ import java.util.concurrent.ScheduledFuture;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-public class Entrenador {
+public class Tiempo {
 
-    interface EntrenadorListener {
+    interface TiempoListener {
         void cuandoDeLaOrden(String orden);
     }
 
@@ -24,7 +24,7 @@ public class Entrenador {
         protected void onActive() {
             super.onActive();
 
-            iniciarEntrenamiento(new EntrenadorListener() {
+            iniciarTiempo(new TiempoListener() {
                 @Override
                 public void cuandoDeLaOrden(String orden) {
                     postValue(orden);
@@ -36,31 +36,31 @@ public class Entrenador {
         protected void onInactive() {
             super.onInactive();
 
-            pararEntrenamiento();
+            pararTiempo();
         }
     };
 
-    void iniciarEntrenamiento(final EntrenadorListener entrenadorListener){
+    void iniciarTiempo(final TiempoListener tiempoListener){
         if (entrenando == null || entrenando.isCancelled()){
             // Log.e("ABCD" , "INICIANDO ENTRENAMIENTO....");
             entrenando = scheduler.scheduleAtFixedRate(new Runnable() {
-                int ejercicio;
+                int tiempo;
                 int repeticiones = -1;
 
                 @Override
                 public void run() {
                     if(repeticiones < 0){
                         repeticiones = random.nextInt(3)+3;
-                        ejercicio = random.nextInt(5)+1;
+                        tiempo = random.nextInt(5)+1;
                     }
-                    entrenadorListener.cuandoDeLaOrden("EJERCICIO"+ejercicio + ":" + (repeticiones == 0 ? "CAMBIO" : repeticiones));
+                    tiempoListener.cuandoDeLaOrden("TIEMPO"+tiempo + ":" + (repeticiones == 0 ? "CAMBIO" : repeticiones));
                     repeticiones--;
                 }
             }, 0, 1, SECONDS);
         }
     }
 
-    void pararEntrenamiento(){
+    void pararTiempo(){
         if(entrenando != null) {
             // Log.e("ABCD" , "PARANDO ENTRENAMIENTO....");
             entrenando.cancel(true);

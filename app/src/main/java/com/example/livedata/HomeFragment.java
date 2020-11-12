@@ -31,7 +31,7 @@ public class HomeFragment extends Fragment {
         binding.iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_entrenadorFragment);
+                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_tiempoFragment);
             }
         });
     }

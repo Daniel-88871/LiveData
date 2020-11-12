@@ -6,17 +6,17 @@
     app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/entrenadorFragment"
-        android:name="com.example.livedata.EntrenadorFragment"
-        android:label="fragment_entrenador"
-        tools:layout="@layout/fragment_entrenador" />
+        android:id="@+id/tiempoFragment"
+        android:name="com.example.livedata.TiempoFragment"
+        android:label="fragment_tiempo"
+        tools:layout="@layout/fragment_tiempo" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.livedata.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_entrenadorFragment"
-            app:destination="@id/entrenadorFragment" />
+            android:id="@+id/action_homeFragment_to_tiempoFragment"
+            app:destination="@id/tiempoFragment" />
     </fragment>
 </navigation>

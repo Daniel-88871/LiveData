@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f7f6f6"
-    tools:context=".EntrenadorFragment">
+    tools:context=".TiempoFragment">
 
     <ImageView
-        android:id="@+id/ejercicio"
+        android:id="@+id/tiempo"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <TextView

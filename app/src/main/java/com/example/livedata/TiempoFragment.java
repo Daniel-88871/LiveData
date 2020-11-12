@@ -12,11 +12,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
-import com.example.livedata.EntrenadorViewModel;
 import com.example.livedata.databinding.FragmentEntrenadorBinding;
 
 
-public class EntrenadorFragment extends Fragment {
+public class TiempoFragment extends Fragment {
 
     private FragmentEntrenadorBinding binding;
 
@@ -29,16 +28,16 @@ public class EntrenadorFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        EntrenadorViewModel entrenadorViewModel = new ViewModelProvider(this).get(EntrenadorViewModel.class);
+        TiempoViewModel tiempoViewModel = new ViewModelProvider(this).get(TiempoViewModel.class);
 
-        entrenadorViewModel.obtenerEjercicio().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+        tiempoViewModel.obtenerTiempo().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
             public void onChanged(Integer ejercicio) {
-                Glide.with(EntrenadorFragment.this).load(ejercicio).into(binding.ejercicio);
+                Glide.with(TiempoFragment.this).load(ejercicio).into(binding.tiempo);
             }
         });
 
-        entrenadorViewModel.obtenerRepeticion().observe(getViewLifecycleOwner(), new Observer<String>() {
+        tiempoViewModel.obtenerRepeticion().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String repeticion) {
                 if(repeticion.equals("CAMBIO")){
